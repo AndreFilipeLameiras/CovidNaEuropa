@@ -14,7 +14,11 @@ import org.junit.Assert.*
  * See [testing documentation](http://d.android.com/tools/testing).
  */
 @RunWith(AndroidJUnit4::class)
-class ExampleInstrumentedTest {
+class TestesBaseDados {
+    private
+
+
+
     @Test
     fun useAppContext() {
         // Context of the app under test.

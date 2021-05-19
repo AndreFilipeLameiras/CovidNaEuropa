@@ -13,7 +13,11 @@ class BdCovid19Europa(context: Context?)
      * @param db The database.
      */
     override fun onCreate(db: SQLiteDatabase?) {
-        
+
+        if (db != null) {
+            TabelaDasMortes(db).cria()
+            TabelaDePaises(db).cria()
+        }
 
     }
 
