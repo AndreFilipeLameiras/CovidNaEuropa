@@ -11,4 +11,10 @@ class TabelaDePaises(db: SQLiteDatabase) {
     }
 
 
+    companion object{
+        const val NOME_TABELA = "paises"
+
+    }
+
+
 }

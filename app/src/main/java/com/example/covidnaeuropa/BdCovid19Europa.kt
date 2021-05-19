@@ -17,6 +17,7 @@ class BdCovid19Europa(context: Context?)
         if (db != null) {
             TabelaDasMortes(db).cria()
             TabelaDePaises(db).cria()
+            TabelaNovasInfecoes(db).cria()
         }
 
     }
