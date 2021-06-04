@@ -37,7 +37,7 @@ class TestesBaseDados {
         val db = getbdCovid19Europa().writableDatabase
         val tabelaNovaInfecoes = TabelaNovasInfecoes(db)
 
-        val id = tabelaNovaInfecoes.insert()
+
     }
 
 }
