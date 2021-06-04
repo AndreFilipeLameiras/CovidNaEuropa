@@ -13,6 +13,7 @@ class TabelaDasMortes(db: SQLiteDatabase) {
                 BaseColumns._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 NUMERO_MORTES + " INTEGER, " +
                 CAMPO_MEDIA + " INTEGER, " +
+                CAMPO_DATA + " DATE" +
                 CAMPO_ID_PAIS + " INTEGER NOT NULL, " +
                 "FOREIGN KEY(" + CAMPO_ID_PAIS + ") " +
                 "REFERENCES " + TabelaDePaises.NOME_TABELA +
@@ -48,5 +49,6 @@ class TabelaDasMortes(db: SQLiteDatabase) {
         const val NUMERO_MORTES = "numero"
         const val CAMPO_MEDIA = "media"
         const val CAMPO_ID_PAIS = "id_pais"
+        const val CAMPO_DATA = "data"
     }
 }

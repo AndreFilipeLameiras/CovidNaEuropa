@@ -15,14 +15,11 @@ import org.junit.Assert.*
  */
 @RunWith(AndroidJUnit4::class)
 class TestesBaseDados {
-    private
-
-
+    private fun getAppContext() = InstrumentationRegistry.getInstrumentation().targetContext
 
     @Test
-    fun useAppContext() {
-        // Context of the app under test.
-        val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("com.example.covidnaeuropa", appContext.packageName)
+    fun consegueAbrirBaseDados(){
+        val openHelper = BdCovid19Europa(getAppContext())
+        openHelper.
     }
 }

@@ -13,6 +13,7 @@ class TabelaNovasInfecoes (db: SQLiteDatabase){
                 BaseColumns._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 CAMPO_NOVAS + " INTEGER NOT NULL, " +
                 CAMPO_MEDIA + " INTEGER NOT NULL, " +
+                CAMPO_DATA + " DATE," +
                 CAMPO_ID_PAIS + " INTEGER NOT NULL, " +
                 "FOREIGN KEY(" + CAMPO_ID_PAIS + ") " +
                 "REFERENCE " + TabelaDePaises.NOME_TABELA +
@@ -51,6 +52,6 @@ class TabelaNovasInfecoes (db: SQLiteDatabase){
         const val CAMPO_NOVAS = "novas"
         const val CAMPO_MEDIA = "media"
         const val CAMPO_ID_PAIS = "id_pais"
-
+        const val CAMPO_DATA = "data"
     }
 }
