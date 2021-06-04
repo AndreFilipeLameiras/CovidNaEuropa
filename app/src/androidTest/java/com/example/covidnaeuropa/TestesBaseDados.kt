@@ -17,9 +17,10 @@ import org.junit.Before
 @RunWith(AndroidJUnit4::class)
 class TestesBaseDados {
     private fun getAppContext() = InstrumentationRegistry.getInstrumentation().targetContext
+    private fun getbdCovid19Europa() = BdCovid19Europa(getAppContext())
 
     @Before
-    fun apagaBasseDados(){
+    fun apagaBaseDados(){
         getAppContext().deleteDatabase(BdCovid19Europa.NOME_BASE_DADOS)
     }
 
@@ -31,5 +32,12 @@ class TestesBaseDados {
         db.close()
     }
 
-    
+    @Test
+    fun consegueInserirNovasInfeccoes(){
+        val db = getbdCovid19Europa().writableDatabase
+        val tabelaNovaInfecoes = TabelaNovasInfecoes(db)
+
+        val id = tabelaNovaInfecoes.insert()
+    }
+
 }

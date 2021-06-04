@@ -10,7 +10,14 @@ class TabelaDePaises(db: SQLiteDatabase) {
     fun cria(){
         db.execSQL("CREATE TABLE " +  NOME_TABELA + "(" +
                 BaseColumns._ID + " INTEGER PRIMARY KEY AUTOINCREMENTE, " +
-                CAMPO_NOME + " TEXT NOT NULL" +
+                CAMPO_NOME + " TEXT NOT NULL, " +
+                CAMPO_CONTINENTE + " TEXT NOT NULL, " +
+                CAMPO_ID_INFECOES + " INTEGER NOT NULL, " +
+                CAMPO_ID_MORTES + " INTEGER NOT NULL, " +
+                " FOREIGN KEY(" + CAMPO_ID_INFECOES + ") " +
+                "REFERENCES " + TabelaNovasInfecoes.NOME_TABELA + ", " +
+                " FOREIGN KEY(" + CAMPO_ID_MORTES + ") " +
+                "REFERENCES " + TabelaDasMortes.NOME_TABELA  +
                 ")")
 
     }
@@ -43,7 +50,9 @@ class TabelaDePaises(db: SQLiteDatabase) {
     companion object{
         const val NOME_TABELA = "paises"
         const val CAMPO_NOME = "nome"
-
+        const val CAMPO_CONTINENTE = "continente"
+        const val CAMPO_ID_INFECOES = "id_Infecoes"
+        const val CAMPO_ID_MORTES = "id_Mortes"
     }
 
 

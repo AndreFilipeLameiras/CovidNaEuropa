@@ -13,7 +13,7 @@ class TabelaDasMortes(db: SQLiteDatabase) {
                 BaseColumns._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 NUMERO_MORTES + " INTEGER, " +
                 CAMPO_MEDIA + " INTEGER, " +
-                CAMPO_DATA + " DATE" +
+                CAMPO_DATA + " DATE, " +
                 CAMPO_ID_PAIS + " INTEGER NOT NULL, " +
                 "FOREIGN KEY(" + CAMPO_ID_PAIS + ") " +
                 "REFERENCES " + TabelaDePaises.NOME_TABELA +
