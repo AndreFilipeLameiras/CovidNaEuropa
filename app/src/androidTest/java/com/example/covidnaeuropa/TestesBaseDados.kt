@@ -37,6 +37,11 @@ class TestesBaseDados {
         val db = getbdCovid19Europa().writableDatabase
         val tabelaNovaInfecoes = TabelaNovasInfecoes(db)
 
+        val id = tabelaNovaInfecoes.insert(Infeccoes(numero = 12).toContentValues())
+
+        assertEquals(-1, id)
+
+        db.close()
 
     }
 
