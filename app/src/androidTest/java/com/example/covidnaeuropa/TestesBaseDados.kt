@@ -20,6 +20,10 @@ class TestesBaseDados {
     @Test
     fun consegueAbrirBaseDados(){
         val openHelper = BdCovid19Europa(getAppContext())
-        openHelper.
+        val  db = openHelper.readableDatabase
+        assert(db.isOpen)
+        db.close()
     }
+
+    
 }
