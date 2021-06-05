@@ -1,5 +1,6 @@
 package com.example.covidnaeuropa
 
+import android.provider.BaseColumns
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
 
@@ -19,6 +20,15 @@ class TestesBaseDados {
     private fun getAppContext() = InstrumentationRegistry.getInstrumentation().targetContext
     private fun getbdCovid19Europa() = BdCovid19Europa(getAppContext())
 
+
+    private fun insereNovasInfeccoes(tabela: TabelaNovasInfecoes,infeccoes: Infeccoes): Long {
+        val id = tabela.insert(infeccoes.toContentValues())
+        assertEquals(-1, id)
+        return id
+    }
+
+
+
     @Before
     fun apagaBaseDados(){
         getAppContext().deleteDatabase(BdCovid19Europa.NOME_BASE_DADOS)
@@ -37,12 +47,32 @@ class TestesBaseDados {
         val db = getbdCovid19Europa().writableDatabase
         val tabelaNovaInfecoes = TabelaNovasInfecoes(db)
 
-        val id = tabelaNovaInfecoes.insert(Infeccoes(numero = 12).toContentValues())
-
-        assertEquals(-1, id)
+        val infeccoes = Infeccoes(numero = 12)
+        infeccoes.id = insereNovasInfeccoes(tabelaNovaInfecoes, infeccoes)
 
         db.close()
 
+    }
+
+    @Test
+    fun consegueAlterarNovasInfeccoes(){
+        val db = getbdCovid19Europa().writableDatabase
+        val tabelaNovaInfecoes = TabelaNovasInfecoes(db)
+
+        val infeccoes = Infeccoes(numero = 14)
+        infeccoes.id = insereNovasInfeccoes(tabelaNovaInfecoes, infeccoes)
+
+        infeccoes.numero = 16
+
+        val registosAlterados = tabelaNovaInfecoes.update(
+                infeccoes.toContentValues(),
+                "${BaseColumns._ID}=?",
+                arrayOf(infeccoes.id.toString())
+        )
+
+        assertEquals(1, registosAlterados)
+        
+        db.close()
     }
 
 }
