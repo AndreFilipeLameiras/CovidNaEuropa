@@ -16,7 +16,7 @@ class TabelaNovasInfecoes (db: SQLiteDatabase){
                 CAMPO_DATA + " DATE," +
                 CAMPO_ID_PAIS + " INTEGER NOT NULL, " +
                 "FOREIGN KEY(" + CAMPO_ID_PAIS + ") " +
-                "REFERENCE " + TabelaDePaises.NOME_TABELA +
+                    "REFERENCE " + TabelaDePaises.NOME_TABELA +
                 ")")
 
     }

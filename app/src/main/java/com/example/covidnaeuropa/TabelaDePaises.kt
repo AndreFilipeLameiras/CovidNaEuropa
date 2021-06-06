@@ -9,15 +9,15 @@ class TabelaDePaises(db: SQLiteDatabase) {
     private val db: SQLiteDatabase = db
     fun cria(){
         db.execSQL("CREATE TABLE " +  NOME_TABELA + "(" +
-                BaseColumns._ID + " INTEGER PRIMARY KEY AUTOINCREMENTE, " +
+                BaseColumns._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 CAMPO_NOME + " TEXT NOT NULL, " +
                 CAMPO_CONTINENTE + " TEXT NOT NULL, " +
                 CAMPO_ID_INFECOES + " INTEGER NOT NULL, " +
                 CAMPO_ID_MORTES + " INTEGER NOT NULL, " +
-                " FOREIGN KEY(" + CAMPO_ID_INFECOES + ") " +
-                "REFERENCES " + TabelaNovasInfecoes.NOME_TABELA + ", " +
-                " FOREIGN KEY(" + CAMPO_ID_MORTES + ") " +
-                "REFERENCES " + TabelaDasMortes.NOME_TABELA  +
+                "FOREIGN KEY(" + CAMPO_ID_INFECOES + ") " +
+                    "REFERENCES " + TabelaNovasInfecoes.NOME_TABELA + ", " +
+                "FOREIGN KEY(" + CAMPO_ID_MORTES + ") " +
+                    "REFERENCES " + TabelaDasMortes.NOME_TABELA  +
                 ")")
 
     }

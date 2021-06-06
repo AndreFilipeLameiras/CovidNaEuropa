@@ -47,7 +47,7 @@ class TestesBaseDados {
         val db = getbdCovid19Europa().writableDatabase
         val tabelaNovaInfecoes = TabelaNovasInfecoes(db)
 
-        val infeccoes = Infeccoes(numero = 12)
+        val infeccoes = Infeccoes(numero = 12, idPais = 4)
         infeccoes.id = insereNovasInfeccoes(tabelaNovaInfecoes, infeccoes)
 
         db.close()
@@ -59,10 +59,11 @@ class TestesBaseDados {
         val db = getbdCovid19Europa().writableDatabase
         val tabelaNovaInfecoes = TabelaNovasInfecoes(db)
 
-        val infeccoes = Infeccoes(numero = 14)
+        val infeccoes = Infeccoes(numero = 14, idPais = 8)
         infeccoes.id = insereNovasInfeccoes(tabelaNovaInfecoes, infeccoes)
 
         infeccoes.numero = 16
+        infeccoes.idPais = 13
 
         val registosAlterados = tabelaNovaInfecoes.update(
                 infeccoes.toContentValues(),
@@ -71,8 +72,25 @@ class TestesBaseDados {
         )
 
         assertEquals(1, registosAlterados)
-        
+
         db.close()
     }
 
+    @Test
+    fun consegueEliminarNovasInfeccoes(){
+        val db = getbdCovid19Europa().writableDatabase
+        val tabelaNovaInfecoes = TabelaNovasInfecoes(db)
+
+        val infeccoes = Infeccoes(numero = 11, idPais = 7)
+        infeccoes.id = insereNovasInfeccoes(tabelaNovaInfecoes, infeccoes)
+
+        val registosEliminados = tabelaNovaInfecoes.delete(
+                "${BaseColumns._ID}=?",
+                arrayOf(infeccoes.id.toString())
+        )
+
+        assertEquals(1, registosEliminados)
+
+        db.close()
+    }
 }

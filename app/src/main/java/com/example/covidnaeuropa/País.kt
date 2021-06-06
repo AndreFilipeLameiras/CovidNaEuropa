@@ -15,7 +15,5 @@ data class País(var id: Long = -1, var nome: String, var continente: String, va
     }
 
 
-    companion object{
 
-    }
 }
